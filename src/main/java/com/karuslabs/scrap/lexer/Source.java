@@ -39,10 +39,43 @@ public class Source {
     
     public Source(Reader reader) {
         this.reader = reader;
-        line = 0;
+        line = 1;
         column = 0;
         next = INITIAL;
     }
+    
+        
+    public String read() throws IOException {
+        var builder = new StringBuilder();
+        while (true) {
+            int c = peek();
+            switch (c) {
+                case ' ':
+                case '\n':
+                case -1:
+                    return builder.toString();
+                    
+                default:
+                    next();
+                    builder.append((char) c);
+            }
+        }
+    }
+    
+    
+    public void skip() throws IOException {
+        while (true) {
+            switch (peek()) {
+                case ' ':
+                case '\n':
+                    next();
+                    break;
+                    
+                default:
+                    return;
+            }
+        }
+    }   
     
     
     public int peek() throws IOException {

@@ -23,11 +23,25 @@
  */
 package com.karuslabs.scrap;
 
+import com.karuslabs.scrap.lexer.Lexer;
+import com.karuslabs.scrap.lexer.Source;
+
+import java.io.StringReader;
+
 
 public class Main {
     
     public static void main(String[] args) {
-        
+        var lexer = new Lexer(new Source(new StringReader("    +3 - / = == A 6 6a A5 ~ "
+                + "\n *")));
+        while (true) {
+            var token = lexer.next();
+            if (token == null) {
+                return;
+            }
+            
+            System.out.println("Type " + token.type + " value: " + token.value);
+        }
     }
     
 }

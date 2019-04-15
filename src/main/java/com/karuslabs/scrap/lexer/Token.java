@@ -23,19 +23,21 @@
  */
 package com.karuslabs.scrap.lexer;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 
 public class Token {
     
     public final Type type;
-    public final Object literal;
+    public @Nullable final Object value;
     public final int line;
     public final int start;
     public final int end;
     
     
-    public Token(Type type, Object literal, int line, int start, int end) {
+    public Token(Type type, Object value, int line, int start, int end) {
         this.type = type;
-        this.literal = literal;
+        this.value = value;
         this.line = line;
         this.start = start;
         this.end = end;

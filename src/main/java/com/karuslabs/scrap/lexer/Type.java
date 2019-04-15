@@ -26,11 +26,18 @@ package com.karuslabs.scrap.lexer;
 
 public enum Type {
     
+    IDENTIFIER,
+        
+    LITERAL_STRING,
+    LITERAL_DOUBLE,
+    
     PLUS,
     MINUS,
     MULTIPLY,
     DIVIDE,
+    ASSIGNMENT,
+    EQUAL,
     
-    ERROR
+    LEX_ERROR
     
 }
